@@ -6,17 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="6395b0fb-03e7-450e-9639-005a919ebf5e" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle.kts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/behavioral/BudgetWatcher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/behavioral/BudgetWatcher.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/behavioral/LoyaltyPricing.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/behavioral/LoyaltyPricing.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/behavioral/ReceiptVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/behavioral/ReceiptVisitor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/behavioral/StandardPricing.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/behavioral/StandardPricing.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/creational/ClothingGoodFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/creational/ClothingGoodFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/creational/DrinkGoodFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/creational/DrinkGoodFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/creational/ElectronicsGoodFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/creational/ElectronicsGoodFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/creational/FoodGoodFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/creational/FoodGoodFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/creational/HouseHoldsGoodFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/creational/HouseHoldsGoodFactory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/service/StoreService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/service/StoreService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/config/AppConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/config/AppConfig.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -122,7 +113,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "Gradle.lab2 [:Main.main()].executor": "Debug",
+    "Gradle.lab2 [:Main.main()].executor": "Run",
     "Gradle.lab2 [:org.example.Main.main()].executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.MCP Project settings loaded": "true",

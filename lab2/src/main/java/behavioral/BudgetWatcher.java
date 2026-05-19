@@ -29,12 +29,9 @@ public class BudgetWatcher implements PurchaseObserver {
         if (total > limit) {
 
             System.out.println(
-                    "Превышен лимит: "
+                    "Превышен лимит бюджета: "
                             + total
-            );
-
-            throw new RuntimeException(
-                    "Слишком большая сумма покупки"
+                            + " руб. (лимит: " + limit + " руб.)"
             );
         }
     }
