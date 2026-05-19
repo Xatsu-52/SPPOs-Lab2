@@ -6,6 +6,7 @@ import domain.*;
 import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.beans.factory.annotation.Qualifier;
 import structural.DiscountDecorator;
 
 import java.util.HashMap;
@@ -15,17 +16,17 @@ import java.util.Scanner;
 @Service
 public class StoreService {
 
-    private final FoodGoodFactory foodFactory;
+    private final GoodFactory foodFactory;
 
-    private final DrinkGoodFactory drinkFactory;
+    private final GoodFactory drinkFactory;
 
-    private final ElectronicsGoodFactory electronicsFactory;
+    private final GoodFactory electronicsFactory;
 
-    private final ClothingGoodFactory clothingFactory;
+    private final GoodFactory clothingFactory;
 
-    private final HouseHoldsGoodFactory householdFactory;
+    private final GoodFactory householdFactory;
 
-    private final LoyaltyPricing loyaltyPricing;
+    private final PricingStrategy loyaltyPricing;
 
     private final ObjectProvider<ReceiptVisitor> visitorProvider;
 
@@ -41,12 +42,18 @@ public class StoreService {
 
     @Autowired
     public StoreService(
-            FoodGoodFactory foodFactory,
-            DrinkGoodFactory drinkFactory,
-            ElectronicsGoodFactory electronicsFactory,
-            ClothingGoodFactory clothingFactory,
-            HouseHoldsGoodFactory householdFactory,
-            LoyaltyPricing loyaltyPricing,
+            @Qualifier("foodGoodFactory")
+            GoodFactory foodFactory,
+            @Qualifier("drinkGoodFactory")
+            GoodFactory drinkFactory,
+            @Qualifier("electronicsGoodFactory")
+            GoodFactory electronicsFactory,
+            @Qualifier("clothingGoodFactory")
+            GoodFactory clothingFactory,
+            @Qualifier("houseHoldsGoodFactory")
+            GoodFactory householdFactory,
+            @Qualifier("loyaltyPricing")
+            PricingStrategy loyaltyPricing,
             ObjectProvider<ReceiptVisitor> visitorProvider,
             ObjectProvider<BudgetWatcher> watcherProvider
     ) {
@@ -93,7 +100,7 @@ public class StoreService {
     private void seedProducts() {
 
         Good milk = foodFactory.create(
-                "Молоко",
+                "Молоко 1.5%",
                 1000,
                 95
         );
@@ -119,8 +126,7 @@ public class StoreService {
     private void addNewProduct() {
 
         System.out.println("1. Создать через Factory");
-        System.out.println("2. Создать через Builder");
-        System.out.println("3. Клонировать через Prototype");
+        System.out.println("2. Клонировать через Prototype");
         System.out.print("Выбор: ");
 
         int choice = readInt();
@@ -129,9 +135,7 @@ public class StoreService {
 
             case 1 -> createFromFactory();
 
-            case 2 -> createFromBuilder();
-
-            case 3 -> cloneProduct();
+            case 2 -> cloneProduct();
         }
     }
 
@@ -190,55 +194,6 @@ public class StoreService {
                         good.getCost(),
                         good.getType()
                 )
-        );
-    }
-
-    private void createFromBuilder() {
-
-        System.out.print("Название: ");
-        String name = scanner.nextLine();
-
-        System.out.print("Вес: ");
-        double weight = readDouble();
-
-        System.out.print("Цена: ");
-        double cost = readDouble();
-
-        printCategories();
-
-        int category = readInt();
-
-        String type = switch (category) {
-
-            case 1 -> GoodType.FOOD.getLabel();
-
-            case 2 -> GoodType.ELECTRONICS.getLabel();
-
-            case 3 -> GoodType.CLOTHING.getLabel();
-
-            case 4 -> GoodType.HOUSEHOLD.getLabel();
-
-            case 5 -> GoodType.DRINK.getLabel();
-
-            default -> "Общее";
-        };
-
-        Good good = new GoodBuilder(
-                name,
-                weight,
-                cost
-        )
-                .ID(nextID++)
-                .type(type)
-                .build();
-
-        System.out.print("Количество: ");
-
-        int quantity = readInt();
-
-        catalog.put(
-                good.getID(),
-                new StockItem(good, quantity)
         );
     }
 

@@ -2,11 +2,15 @@ package behavioral;
 
 import domain.GoodItem;
 import domain.Purchase;
-import domain.PurchaseComponent;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 
+@Component
+@Scope("prototype")
 public class ReceiptVisitor {
 
-    private final StringBuilder receipt = new StringBuilder();
+    private final StringBuilder receipt =
+            new StringBuilder();
 
     public void visit(Purchase purchase) {
 
@@ -17,7 +21,8 @@ public class ReceiptVisitor {
         receipt.append("-".repeat(40))
                 .append("\n");
 
-        for (PurchaseComponent item : purchase.getItems()) {
+        for (var item : purchase.getItems()) {
+
             item.accept(this);
         }
     }
@@ -36,6 +41,7 @@ public class ReceiptVisitor {
     }
 
     public String print() {
+
         return receipt.toString();
     }
 }

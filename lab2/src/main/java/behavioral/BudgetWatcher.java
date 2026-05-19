@@ -1,18 +1,41 @@
 package behavioral;
 
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+
+@Component
+@Scope("prototype")
 public class BudgetWatcher implements PurchaseObserver {
-    private final double limit;
 
-    public BudgetWatcher(double limit) { this.limit = limit; }
+    private final double limit = 100000;
 
-    @Override public void onItemAdded(String name, double total) {
-        System.out.println(" Добавлено: " + name + " | Сумма: " + total + " руб.");
+    @Override
+    public void onItemAdded(
+            String name,
+            double total
+    ) {
+
+        System.out.println(
+                "Добавлено: "
+                        + name
+                        + " | Сумма: "
+                        + total
+        );
     }
 
-    @Override public void onTotalUpdated(double total) {
+    @Override
+    public void onTotalUpdated(double total) {
+
         if (total > limit) {
-            System.out.println("Внимание! Сумма превысила лимит (" + limit + " руб.). Текущая: " + total);
-            throw new RuntimeException("Превышен максимальынй допустимый чек " + limit + " рублей.");
+
+            System.out.println(
+                    "Превышен лимит: "
+                            + total
+            );
+
+            throw new RuntimeException(
+                    "Слишком большая сумма покупки"
+            );
         }
     }
 }
